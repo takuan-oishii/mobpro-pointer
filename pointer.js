@@ -11,7 +11,7 @@ class Pointer {
   render(context) {
     var gamepad = this.gamepad();
 
-    if (gamepad.buttons[15].pressed) {
+    if (gamepad.buttons[5].pressed) {
       this.update();
 
       context.beginPath();
@@ -28,12 +28,8 @@ class Pointer {
     var direction = this.getPointerDirection(gamepad);
 
     var magnification = 10;
-    if (gamepad.buttons[14].pressed) {
+    if (gamepad.buttons[0].pressed || gamepad.buttons[1].pressed || gamepad.buttons[2].pressed || gamepad.buttons[3].pressed) {
       magnification = 4;
-    }
-
-    if (gamepad.id.match(/^Joy-Con \(R\)/)) {
-      magnification *= -1;
     }
 
     this.x += direction[0] * magnification;
@@ -50,21 +46,21 @@ class Pointer {
 
     switch (gamepad.axes[9]) {
       case -1:
-        return [2, 0];
-      case 1:
-        return [1, -1];
-      case 0.7142857313156128:
         return [0, -2];
-      case 0.4285714626312256:
+      case 1:
         return [-1, -1];
-      case 0.14285719394683838:
+      case 0.7142857313156128:
         return [-2, 0];
-      case -0.1428571343421936:
+      case 0.4285714626312256:
         return [-1, 1];
-      case -0.4285714030265808:
+      case 0.14285719394683838:
         return [0, 2];
-      case -0.7142857313156128:
+      case -0.1428571343421936:
         return [1, 1];
+      case -0.4285714030265808:
+        return [2, 0];
+      case -0.7142857313156128:
+        return [1, -1];
       default:
         return [0, 0];
     }
