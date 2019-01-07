@@ -1,9 +1,11 @@
+const colors = ['#dd302f', '#13aa15', '#304cc8', '#4e2388', '#fcc201', '#da9101'];
+
 class Pointer {
-  constructor(gamepadIndex) {
+  constructor(gamepadIndex, pointerCount) {
     this.gamepadIndex = gamepadIndex;
     this.x = 1500;
     this.y = 900;
-    this.color = '#ff0000';
+    this.color = colors[pointerCount % 6];
   }
 
   render(context) {
@@ -28,6 +30,10 @@ class Pointer {
     var magnification = 10;
     if (gamepad.buttons[14].pressed) {
       magnification = 4;
+    }
+
+    if (gamepad.id.match(/^Joy-Con \(R\)/)) {
+      magnification *= -1;
     }
 
     this.x += direction[0] * magnification;
