@@ -1,7 +1,7 @@
+var windowWidth = null;
+var windowHeight = null;
+var context = null;
 var pointers = [];
-
-const canvas = document.getElementsByTagName('canvas')[0];
-const context = canvas.getContext('2d');
 
 window.addEventListener("gamepadconnected", function (e) {
   pointers.push(new Pointer(e.gamepad.index, pointers.length));
@@ -36,4 +36,18 @@ var render = function () {
   requestAnimationFrame(render);
 };
 
-requestAnimationFrame(render);
+window.onload = function () {
+  windowWidth = document.body.offsetWidth;
+  windowHeight = document.body.offsetHeight;
+
+  var canvas = document.createElement('canvas');
+  canvas.width = windowWidth * 2;
+  canvas.height = windowHeight * 2;
+  canvas.style.width = windowWidth;
+  canvas.style.height = windowHeight;
+  document.body.appendChild(canvas);
+
+  context = canvas.getContext('2d');
+
+  requestAnimationFrame(render);
+};

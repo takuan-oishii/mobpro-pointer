@@ -3,8 +3,8 @@ const colors = ['#dd302f', '#13aa15', '#304cc8', '#4e2388', '#fcc201', '#da9101'
 class Pointer {
   constructor(gamepadIndex, pointerCount) {
     this.gamepadIndex = gamepadIndex;
-    this.x = 1500;
-    this.y = 900;
+    this.x = windowWidth / 2;
+    this.y = windowHeight / 2;
     this.color = colors[pointerCount % 6];
   }
 
@@ -16,7 +16,7 @@ class Pointer {
 
       context.beginPath();
       context.fillStyle = this.color;
-      context.arc(this.x, this.y, 10, 0, Math.PI * 2, true);
+      context.arc(this.x, this.y, 5, 0, Math.PI * 2, true);
       context.fill();
     } else {
       this.hide();
@@ -27,9 +27,9 @@ class Pointer {
     var gamepad = this.gamepad();
     var direction = this.getPointerDirection(gamepad);
 
-    var magnification = 10;
+    var magnification = 8;
     if (gamepad.buttons[0].pressed || gamepad.buttons[1].pressed || gamepad.buttons[2].pressed || gamepad.buttons[3].pressed) {
-      magnification = 4;
+      magnification = 3;
     }
 
     this.x += direction[0] * magnification;
@@ -37,8 +37,8 @@ class Pointer {
   };
 
   hide() {
-    this.x = 1500;
-    this.y = 900;
+    this.x = windowWidth / 2;
+    this.y = windowHeight / 2;
   }
 
   getPointerDirection() {
