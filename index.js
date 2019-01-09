@@ -25,7 +25,7 @@ var getPointersIndex = function (gamepadIndex) {
 };
 
 var render = function () {
-  context.clearRect(0, 0, 3000, 1900);
+  context.clearRect(0, 0, windowWidth, windowHeight);
 
   pointers.forEach(function (pointer) {
     if (pointer) {
