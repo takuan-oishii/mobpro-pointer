@@ -1,4 +1,4 @@
-const colors = ['#dd302f', '#13aa15', '#304cc8', '#4e2388', '#fcc201', '#da9101'];
+const colors = ['#dd302f', '#13aa15', '#304cc8', '#fcc201', '#da9101'];
 
 class Pointer {
   constructor(gamepadIndex, pointerCount) {
