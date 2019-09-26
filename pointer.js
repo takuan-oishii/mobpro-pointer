@@ -27,9 +27,9 @@ class Pointer {
     var gamepad = this.gamepad();
     var direction = this.getPointerDirection(gamepad);
 
-    var magnification = 8;
+    var magnification = 16;
     if (gamepad.buttons[0].pressed || gamepad.buttons[1].pressed || gamepad.buttons[2].pressed || gamepad.buttons[3].pressed) {
-      magnification = 3;
+      magnification = 8;
     }
 
     this.x += direction[0] * magnification;
@@ -43,27 +43,7 @@ class Pointer {
 
   getPointerDirection() {
     var gamepad = this.gamepad();
-
-    switch (gamepad.axes[9]) {
-      case -1:
-        return [0, -2];
-      case 1:
-        return [-1, -1];
-      case 0.7142857313156128:
-        return [-2, 0];
-      case 0.4285714626312256:
-        return [-1, 1];
-      case 0.14285719394683838:
-        return [0, 2];
-      case -0.1428571343421936:
-        return [1, 1];
-      case -0.4285714030265808:
-        return [2, 0];
-      case -0.7142857313156128:
-        return [1, -1];
-      default:
-        return [0, 0];
-    }
+    return gamepad.axes;
   };
 
   gamepad() {
