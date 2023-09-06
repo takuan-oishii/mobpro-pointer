@@ -18,6 +18,6 @@
   "homepage": "https://github.com/takuan-oishii/mobpro-pointer#readme",
   "description": "",
   "devDependencies": {
-    "electron": "^23.0.0"
+    "electron": "^23.2.3"
   }
 }
